@@ -5,14 +5,14 @@ import model.Transacao;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionRepository {
+public class TransacaoRepository {
 
-    List<Transacao> LIST = new ArrayList<> ();
+    private List<Transacao> lista = new ArrayList<> ();
 
-    public void save(Transacao transaction) {
-            LIST.add(transaction);
+    public void salvar(Transacao transacao) {
+            lista.add(transacao);
     }
-    public List<Transacao> list(){
-        return LIST;
+    public List<Transacao> listar(){
+        return lista;
     }
 }
