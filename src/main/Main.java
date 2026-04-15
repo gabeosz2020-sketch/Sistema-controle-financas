@@ -1,5 +1,6 @@
 package main;
 
+import enums.TipoTransacao;
 import view.ConsoleView;
 import model.Transacao;
 import service.TransacaoService;
@@ -14,27 +15,36 @@ public class Main {
         TransacaoService service = new TransacaoService();
 
         Transacao t1 = new Transacao(
-                1L,
                 "salario",
-                new BigDecimal("3000"),
-                "RECEITA"
+                new BigDecimal("2000"),
+                TipoTransacao.RECEITA
         );
         Transacao t2 = new Transacao(
-                2L,
                 "academia",
                 new BigDecimal("150"),
-                "DESPESA"
+                TipoTransacao.DESPESA
         );
         Transacao t3 = new Transacao(
-                3L,
                 "internet",
                 new BigDecimal("100"),
-                "DESPESA"
+                TipoTransacao.DESPESA
+        );
+        Transacao t4 = new Transacao(
+                "Compras comida",
+                new BigDecimal("1000"),
+                TipoTransacao.DESPESA
+        );
+        Transacao t5 = new Transacao(
+                "Curso idiomas",
+                new BigDecimal("400"),
+                TipoTransacao.DESPESA
         );
 
         service.addTransacao(t1);
         service.addTransacao(t2);
         service.addTransacao(t3);
+        service.addTransacao(t4);
+        service.addTransacao(t5);
 
        List <Transacao> lista = service.listarTransacoes();
         double saldo = service.calcularSaldo();

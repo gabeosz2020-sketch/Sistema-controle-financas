@@ -1,5 +1,6 @@
 package service;
 
+import enums.TipoTransacao;
 import model.Transacao;
 import repository.TransacaoRepository;
 
@@ -21,12 +22,14 @@ public class TransacaoService {
         double saldo = 0;
 
         for (Transacao t : repository.listar()) {
-            if (t.getTipo().equals("RECEITA")) {
+
+            if (t.getTipo() == TipoTransacao.RECEITA) {
                 saldo += t.getValor().doubleValue();
 
-            } else if (t.getTipo().equals("DESPESA")) {
+            } else if (t.getTipo() == TipoTransacao.DESPESA) {
                 saldo -= t.getValor().doubleValue();
             }
-        }   return saldo;
+        }
+        return saldo;
     }
-    }
+}
