@@ -14,7 +14,6 @@ public class Main {
 
         ConsoleView consoleView = new ConsoleView();
         TransacaoService service = new TransacaoService();
-        List<Transacao> lista = new ArrayList<>();
 
         int opcao;
 
@@ -26,12 +25,15 @@ public class Main {
 
                 case 1:
                     Transacao t = consoleView.lerTransacao();
-                    lista.add(t);
+                    service.addTransacao(t);
                     System.out.println("\nTransação adicionada com sucesso!");
                     break;
 
                 case 2:
-                    consoleView.imprimeConsole(lista,BigDecimal.ZERO);
+                    consoleView.imprimeConsole(
+                            service.listarTransacoes(),
+                            BigDecimal.valueOf(service.calcularSaldo())
+                    );
                     break;
 
 
