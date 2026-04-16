@@ -1,6 +1,8 @@
 package view;
+import enums.TipoTransacao;
 import model.Transacao;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
@@ -27,16 +29,37 @@ public class ConsoleView {
     private Scanner scanner = new Scanner(System.in);
 
     public int lerOpcao() {
-        System.out.println("===== MENU =====");
+        System.out.println("\n===== MENU =====");
         System.out.println("1 - Adicionar transação ");
         System.out.println("2 - Listar transações ");
         System.out.println("3 - Ver saldo ");
-        System.out.print("0 - Sair ");
+        System.out.println("0 - Sair ");
+        System.out.print("Escolha uma opção: ");
 
         int opcao = scanner.nextInt();
 
         return opcao;
     }
+
+    public Transacao lerTransacao(){
+        scanner.nextLine();
+
+        System.out.print("\nDescrinção: ");
+        String descrincao = scanner.nextLine();
+
+        System.out.print("\nValor: ");
+        BigDecimal valor = scanner.nextBigDecimal();
+
+        scanner.nextLine();
+
+        System.out.print("\nTipo (RECEITA/DESPESA): ");
+        TipoTransacao tipo = TipoTransacao.valueOf(scanner.nextLine().toUpperCase());
+
+        return new Transacao( descrincao, valor,tipo);
+
+
+    }
+
 }
 
 
