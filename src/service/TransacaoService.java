@@ -4,6 +4,7 @@ import enums.TipoTransacao;
 import model.Transacao;
 import repository.TransacaoRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class TransacaoService {
@@ -18,16 +19,16 @@ public class TransacaoService {
         return repository.listar();
     }
 
-    public double calcularSaldo() {
-        double saldo = 0;
+    public BigDecimal calcularSaldo() {
+        BigDecimal saldo = BigDecimal.ZERO;
 
         for (Transacao t : repository.listar()) {
 
             if (t.getTipo() == TipoTransacao.RECEITA) {
-                saldo += t.getValor().doubleValue();
+                saldo = saldo.add(t.getValor());
 
             } else if (t.getTipo() == TipoTransacao.DESPESA) {
-                saldo -= t.getValor().doubleValue();
+                saldo = saldo.subtract(t.getValor());
             }
         }
         return saldo;
