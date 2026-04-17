@@ -32,10 +32,15 @@ public class Main {
                 case 2:
                     consoleView.imprimeConsole(
                             service.listarTransacoes(),
-                            BigDecimal.valueOf(service.calcularSaldo())
+                            service.calcularSaldo()
                     );
                     break;
 
+                case 3:
+                    consoleView.imprimeSaldo(
+                           service.calcularSaldo()
+                    );
+                    break;
 
                 case 0:
                     System.out.println("Saindo...");
